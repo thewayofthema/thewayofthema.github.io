@@ -1,0 +1,6 @@
+baseURL = 'http://thewayofthema.github.io/'
+languageCode = 'ja'
+title = 'The Way Of The Martial Artists'
+theme = "newsroom"
+publishDir = "docs"
+canonifyurls = true
