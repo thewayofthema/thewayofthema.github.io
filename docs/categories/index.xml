@@ -2,9 +2,9 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on The Way Of The Martial Artists</title>
-    <link>http://thewayofthema.github.io/categories/</link>
+    <link>https://thewayofthema.github.io/categories/</link>
     <description>Recent content in Categories on The Way Of The Martial Artists</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>ja</language><atom:link href="http://thewayofthema.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <language>ja</language><atom:link href="https://thewayofthema.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

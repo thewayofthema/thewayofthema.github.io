@@ -1,4 +1,4 @@
-baseURL = 'http://thewayofthema.github.io/'
+baseURL = 'https://thewayofthema.github.io/'
 languageCode = 'ja'
 title = 'The Way Of The Martial Artists'
 theme = "newsroom"
