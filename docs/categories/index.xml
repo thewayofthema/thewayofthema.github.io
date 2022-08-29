@@ -5,6 +5,25 @@
     <link>https://thewayofthema.github.io/categories/</link>
     <description>Recent content in Categories on The Way Of The Martial Artists</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>ja</language><atom:link href="https://thewayofthema.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <language>ja</language>
+    <lastBuildDate>Wed, 02 Apr 2014 00:00:00 +0000</lastBuildDate><atom:link href="https://thewayofthema.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Development</title>
+      <link>https://thewayofthema.github.io/categories/development/</link>
+      <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://thewayofthema.github.io/categories/development/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>golang</title>
+      <link>https://thewayofthema.github.io/categories/golang/</link>
+      <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://thewayofthema.github.io/categories/golang/</guid>
+      <description></description>
+    </item>
+    
   </channel>
 </rss>

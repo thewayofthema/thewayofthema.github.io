@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en" class="nodarkmode">
+  <head>
+  <title>Migrate to hugo from jekyll | The Way Of The Martial Artists</title>
+  <meta charset='utf-8'>
+  <meta name="viewport" content ="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+
+  
+  
+<meta name="keywords" content="The Way Of The Martial Artists">
+<meta property="og:locale" content='ja'>
+<meta property="og:type" content="article">
+<meta property="og:title" content="Migrate to Hugo from Jekyll">
+<meta property="og:description" content="Move static content to static Jekyll has a rule that any directory not starting with _ will be copied as-is to the _site output. Hugo keeps all static content">
+<meta property="og:url" content="https://thewayofthema.github.io/posts/migrate-from-jekyll/">
+<meta property="og:image" content="https://thewayofthema.github.io/images/speakers.jpg">
+<link rel="canonical" href="https://thewayofthema.github.io/posts/migrate-from-jekyll/">
+
+  <link rel="apple-touch-icon" sizes="57x57" href="https://thewayofthema.github.io/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="https://thewayofthema.github.io/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="https://thewayofthema.github.io/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://thewayofthema.github.io/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="https://thewayofthema.github.io/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="https://thewayofthema.github.io/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="https://thewayofthema.github.io/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="https://thewayofthema.github.io/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://thewayofthema.github.io/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="https://thewayofthema.github.io/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://thewayofthema.github.io/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="https://thewayofthema.github.io/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://thewayofthema.github.io/favicon-16x16.png">
+  <link rel="manifest" href="https://thewayofthema.github.io/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+  
+<link rel="stylesheet" href="https://thewayofthema.github.io/css/styles.86c6da248e485cdc7f340baeb04c29cf0499e12a33a387104028f046c1d4ba15aa3ef8a4bf8f44a2fba7f0263053fa54dc4d2f2baa3d6c8ebb3c69f7bdbded2b.css" integrity="sha512-hsbaJI5IXNx/NAuusEwpzwSZ4Sozo4cQQCjwRsHUuhWqPvikv49Eovun8CYwU/pU3E0vK6o9bI67PGn3vb3tKw==">
+</head>
+
+  <body>
+    <div class="nav-drop">
+  <div class="nav-body">
+      <a href="https://thewayofthema.github.io/about/" class="nav_item">About</a>
+      <a href="https://thewayofthema.github.io/" class="nav_item">Blog</a>
+      <a href="https://thewayofthema.github.io/categories" class="nav_item">Category</a>
+      <a href="https://thewayofthema.github.io/tags" class="nav_item">Tag</a>
+      <a href="https://thewayofthema.github.io/terms/" class="nav_item">Terms Of Service</a>
+    <div class="nav-close"></div><div class="color_mode">
+<label for="mode">Toggle Dark Mode</label>
+<input type="checkbox" class="color_choice" id="mode">
+</div>
+
+  </div>
+</div>
+<header class="nav">
+  <nav class="nav-menu">
+    <a href="https://thewayofthema.github.io/" class="nav-brand nav_item">The Way Of The Martial Artists</a>
+    <div class="nav_bar-wrap">
+      <div class="nav_bar"></div>
+    </div>
+  </nav>
+</header>
+
+
+    <main>
+      
+  <div class="wrap mt post">
+    <div><p class="post_date">10. March 2014</p>
+      <h1 class="post_title">Migrate to Hugo from Jekyll</h1>
+      <div class="post_body">
+        <div class="post_inner">
+        
+          
+          <img src="https://thewayofthema.github.io/images/speakers.jpg" alt="speakers.jpg" class="post_thumbnail">
+        
+          <h2 id="move-static-content-to-static">Move static content to <code>static</code></h2>
+<p>Jekyll has a rule that any directory not starting with <code>_</code> will be copied as-is to the <code>_site</code> output. Hugo keeps all static content under <code>static</code>. You should therefore move it all there.
+With Jekyll, something that looked like</p>
+<pre><code>▾ &lt;root&gt;/
+    ▾ images/
+        logo.png
+</code></pre>
+<p>should become</p>
+<pre><code>▾ &lt;root&gt;/
+    ▾ static/
+        ▾ images/
+            logo.png
+</code></pre>
+<p>Additionally, you&rsquo;ll want any files that should reside at the root (such as <code>CNAME</code>) to be moved to <code>static</code>.</p>
+<h2 id="create-your-hugo-configuration-file">Create your Hugo configuration file</h2>
+<p>Hugo can read your configuration as JSON, YAML or TOML. Hugo supports parameters custom configuration too. Refer to the <a href="https://thewayofthema.github.io/overview/configuration/">Hugo configuration documentation</a> for details.</p>
+<h2 id="set-your-configuration-publish-folder-to-_site">Set your configuration publish folder to <code>_site</code></h2>
+<p>The default is for Jekyll to publish to <code>_site</code> and for Hugo to publish to <code>public</code>. If, like me, you have <a href="http://blog.blindgaenger.net/generate_github_pages_in_a_submodule.html"><code>_site</code> mapped to a git submodule on the <code>gh-pages</code> branch</a>, you&rsquo;ll want to do one of two alternatives:</p>
+<ol>
+<li>Change your submodule to point to map <code>gh-pages</code> to public instead of <code>_site</code> (recommended).</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>  git submodule deinit _site
+</span></span><span style="display:flex;"><span>  git rm _site
+</span></span><span style="display:flex;"><span>  git submodule add -b gh-pages git@github.com:your-username/your-repo.git public
+</span></span></code></pre></div><ol start="2">
+<li>
+<p>Or, change the Hugo configuration to use <code>_site</code> instead of <code>public</code>.</p>
+<pre><code> {
+     ..
+     &quot;publishdir&quot;: &quot;_site&quot;,
+     ..
+ }
+</code></pre>
+</li>
+</ol>
+<h2 id="convert-jekyll-templates-to-hugo-templates">Convert Jekyll templates to Hugo templates</h2>
+<p>That&rsquo;s the bulk of the work right here. The documentation is your friend. You should refer to <a href="http://jekyllrb.com/docs/templates/">Jekyll&rsquo;s template documentation</a> if you need to refresh your memory on how you built your blog and <a href="https://thewayofthema.github.io/layout/templates/">Hugo&rsquo;s template</a> to learn Hugo&rsquo;s way.</p>
+<p>As a single reference data point, converting my templates for <a href="http://heyitsalex.net/">heyitsalex.net</a> took me no more than a few hours.</p>
+<h2 id="convert-jekyll-plugins-to-hugo-shortcodes">Convert Jekyll plugins to Hugo shortcodes</h2>
+<p>Jekyll has <a href="http://jekyllrb.com/docs/plugins/">plugins</a>; Hugo has <a href="https://thewayofthema.github.io/doc/shortcodes/">shortcodes</a>. It&rsquo;s fairly trivial to do a port.</p>
+<h3 id="implementation">Implementation</h3>
+<p>As an example, I was using a custom <a href="https://github.com/alexandre-normand/alexandre-normand/blob/74bb12036a71334fdb7dba84e073382fc06908ec/_plugins/image_tag.rb"><code>image_tag</code></a> plugin to generate figures with caption when running Jekyll. As I read about shortcodes, I found Hugo had a nice built-in shortcode that does exactly the same thing.</p>
+<h4 id="jekylls-plugin">Jekyll&rsquo;s plugin:</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ruby" data-lang="ruby"><span style="display:flex;"><span>    <span style="color:#66d9ef">module</span> Jekyll
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ImageTag</span> <span style="color:#f92672">&lt;</span> <span style="color:#66d9ef">Liquid</span><span style="color:#f92672">::</span><span style="color:#66d9ef">Tag</span>
+</span></span><span style="display:flex;"><span>        @url <span style="color:#f92672">=</span> <span style="color:#66d9ef">nil</span>
+</span></span><span style="display:flex;"><span>        @caption <span style="color:#f92672">=</span> <span style="color:#66d9ef">nil</span>
+</span></span><span style="display:flex;"><span>        @class <span style="color:#f92672">=</span> <span style="color:#66d9ef">nil</span>
+</span></span><span style="display:flex;"><span>        @link <span style="color:#f92672">=</span> <span style="color:#66d9ef">nil</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">//</span> <span style="color:#66d9ef">Patterns</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">IMAGE_URL_WITH_CLASS_AND_CAPTION</span> <span style="color:#f92672">=</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">IMAGE_URL_WITH_CLASS_AND_CAPTION_AND_LINK</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">/(\w+)(\s+)((https?:\/\/|\/)(\S+))(\s+)&#34;(.*?)&#34;(\s+)-&gt;((https?:\/\/|\/)(\S+))(\s*)/i</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">IMAGE_URL_WITH_CAPTION</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">/((https?:\/\/|\/)(\S+))(\s+)&#34;(.*?)&#34;/i</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">IMAGE_URL_WITH_CLASS</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">/(\w+)(\s+)((https?:\/\/|\/)(\S+))/i</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">IMAGE_URL</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">/((https?:\/\/|\/)(\S+))/i</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">initialize</span>(tag_name, markup, tokens)
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">super</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">if</span> markup <span style="color:#f92672">=~</span> <span style="color:#66d9ef">IMAGE_URL_WITH_CLASS_AND_CAPTION_AND_LINK</span>
+</span></span><span style="display:flex;"><span>            @class   <span style="color:#f92672">=</span> $1
+</span></span><span style="display:flex;"><span>            @url     <span style="color:#f92672">=</span> $3
+</span></span><span style="display:flex;"><span>            @caption <span style="color:#f92672">=</span> $7
+</span></span><span style="display:flex;"><span>            @link <span style="color:#f92672">=</span> $9
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">elsif</span> markup <span style="color:#f92672">=~</span> <span style="color:#66d9ef">IMAGE_URL_WITH_CLASS_AND_CAPTION</span>
+</span></span><span style="display:flex;"><span>            @class   <span style="color:#f92672">=</span> $1
+</span></span><span style="display:flex;"><span>            @url     <span style="color:#f92672">=</span> $3
+</span></span><span style="display:flex;"><span>            @caption <span style="color:#f92672">=</span> $7
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">elsif</span> markup <span style="color:#f92672">=~</span> <span style="color:#66d9ef">IMAGE_URL_WITH_CAPTION</span>
+</span></span><span style="display:flex;"><span>            @url     <span style="color:#f92672">=</span> $1
+</span></span><span style="display:flex;"><span>            @caption <span style="color:#f92672">=</span> $5
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">elsif</span> markup <span style="color:#f92672">=~</span> <span style="color:#66d9ef">IMAGE_URL_WITH_CLASS</span>
+</span></span><span style="display:flex;"><span>            @class <span style="color:#f92672">=</span> $1
+</span></span><span style="display:flex;"><span>            @url   <span style="color:#f92672">=</span> $3
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">elsif</span> markup <span style="color:#f92672">=~</span> <span style="color:#66d9ef">IMAGE_URL</span>
+</span></span><span style="display:flex;"><span>            @url <span style="color:#f92672">=</span> $1
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">end</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">end</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">render</span>(context)
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">if</span> @class
+</span></span><span style="display:flex;"><span>            source <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&lt;figure class=&#39;</span><span style="color:#e6db74">#{</span>@class<span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;&gt;&#34;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">else</span>
+</span></span><span style="display:flex;"><span>            source <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&lt;figure&gt;&#34;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">end</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">if</span> @link
+</span></span><span style="display:flex;"><span>            source <span style="color:#f92672">+=</span> <span style="color:#e6db74">&#34;&lt;a href=</span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">#{</span>@link<span style="color:#e6db74">}</span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">&gt;&#34;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">end</span>
+</span></span><span style="display:flex;"><span>          source <span style="color:#f92672">+=</span> <span style="color:#e6db74">&#34;&lt;img src=</span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">#{</span>@url<span style="color:#e6db74">}</span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">&gt;&#34;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">if</span> @link
+</span></span><span style="display:flex;"><span>            source <span style="color:#f92672">+=</span> <span style="color:#e6db74">&#34;&lt;/a&gt;&#34;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">end</span>
+</span></span><span style="display:flex;"><span>          source <span style="color:#f92672">+=</span> <span style="color:#e6db74">&#34;&lt;figcaption&gt;</span><span style="color:#e6db74">#{</span>@caption<span style="color:#e6db74">}</span><span style="color:#e6db74">&lt;/figcaption&gt;&#34;</span> <span style="color:#66d9ef">if</span> @caption
+</span></span><span style="display:flex;"><span>          source <span style="color:#f92672">+=</span> <span style="color:#e6db74">&#34;&lt;/figure&gt;&#34;</span>
+</span></span><span style="display:flex;"><span>          source
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">end</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">end</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">end</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">Liquid</span><span style="color:#f92672">::</span><span style="color:#66d9ef">Template</span><span style="color:#f92672">.</span>register_tag(<span style="color:#e6db74">&#39;image&#39;</span>, <span style="color:#66d9ef">Jekyll</span><span style="color:#f92672">::</span><span style="color:#66d9ef">ImageTag</span>)
+</span></span></code></pre></div><p>is written as this Hugo shortcode:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>    <span style="color:#75715e">&lt;!-- image --&gt;</span>
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">figure</span> <span style="color:#960050;background-color:#1e0010">{{</span> <span style="color:#a6e22e">with</span> <span style="color:#960050;background-color:#1e0010">.</span><span style="color:#a6e22e">Get</span> <span style="color:#960050;background-color:#1e0010">&#34;</span><span style="color:#a6e22e">class</span><span style="color:#960050;background-color:#1e0010">&#34;</span> <span style="color:#960050;background-color:#1e0010">}}</span><span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;{{.}}&#34;</span><span style="color:#960050;background-color:#1e0010">{{</span> <span style="color:#a6e22e">end</span> <span style="color:#960050;background-color:#1e0010">}}</span>&gt;
+</span></span><span style="display:flex;"><span>        {{ with .Get &#34;link&#34;}}&lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;{{.}}&#34;</span>&gt;{{ end }}
+</span></span><span style="display:flex;"><span>            &lt;<span style="color:#f92672">img</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;{{ .Get &#34;</span><span style="color:#a6e22e">src</span><span style="color:#960050;background-color:#1e0010">&#34;</span> <span style="color:#960050;background-color:#1e0010">}}&#34;</span> <span style="color:#960050;background-color:#1e0010">{{</span> <span style="color:#a6e22e">if</span> <span style="color:#a6e22e">or</span> <span style="color:#960050;background-color:#1e0010">(.</span><span style="color:#a6e22e">Get</span> <span style="color:#960050;background-color:#1e0010">&#34;</span><span style="color:#a6e22e">alt</span><span style="color:#960050;background-color:#1e0010">&#34;)</span> <span style="color:#960050;background-color:#1e0010">(.</span><span style="color:#a6e22e">Get</span> <span style="color:#960050;background-color:#1e0010">&#34;</span><span style="color:#a6e22e">caption</span><span style="color:#960050;background-color:#1e0010">&#34;)</span> <span style="color:#960050;background-color:#1e0010">}}</span><span style="color:#a6e22e">alt</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;{{ with .Get &#34;</span><span style="color:#a6e22e">alt</span><span style="color:#960050;background-color:#1e0010">&#34;}}{{.}}{{</span><span style="color:#a6e22e">else</span><span style="color:#960050;background-color:#1e0010">}}{{</span> <span style="color:#960050;background-color:#1e0010">.</span><span style="color:#a6e22e">Get</span> <span style="color:#960050;background-color:#1e0010">&#34;</span><span style="color:#a6e22e">caption</span><span style="color:#960050;background-color:#1e0010">&#34;</span> <span style="color:#960050;background-color:#1e0010">}}{{</span> <span style="color:#a6e22e">end</span> <span style="color:#960050;background-color:#1e0010">}}&#34;{{</span> <span style="color:#a6e22e">end</span> <span style="color:#960050;background-color:#1e0010">}}</span> /&gt;
+</span></span><span style="display:flex;"><span>        {{ if .Get &#34;link&#34;}}&lt;/<span style="color:#f92672">a</span>&gt;{{ end }}
+</span></span><span style="display:flex;"><span>        {{ if or (or (.Get &#34;title&#34;) (.Get &#34;caption&#34;)) (.Get &#34;attr&#34;)}}
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">figcaption</span>&gt;{{ if isset .Params &#34;title&#34; }}
+</span></span><span style="display:flex;"><span>            {{ .Get &#34;title&#34; }}{{ end }}
+</span></span><span style="display:flex;"><span>            {{ if or (.Get &#34;caption&#34;) (.Get &#34;attr&#34;)}}&lt;<span style="color:#f92672">p</span>&gt;
+</span></span><span style="display:flex;"><span>            {{ .Get &#34;caption&#34; }}
+</span></span><span style="display:flex;"><span>            {{ with .Get &#34;attrlink&#34;}}&lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;{{.}}&#34;</span>&gt; {{ end }}
+</span></span><span style="display:flex;"><span>                {{ .Get &#34;attr&#34; }}
+</span></span><span style="display:flex;"><span>            {{ if .Get &#34;attrlink&#34;}}&lt;/<span style="color:#f92672">a</span>&gt; {{ end }}
+</span></span><span style="display:flex;"><span>            &lt;/<span style="color:#f92672">p</span>&gt; {{ end }}
+</span></span><span style="display:flex;"><span>        &lt;/<span style="color:#f92672">figcaption</span>&gt;
+</span></span><span style="display:flex;"><span>        {{ end }}
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">figure</span>&gt;
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">&lt;!-- image --&gt;</span>
+</span></span></code></pre></div><h3 id="usage">Usage</h3>
+<p>I simply changed:</p>
+<pre><code>{% image full http://farm5.staticflickr.com/4136/4829260124_57712e570a_o_d.jpg &quot;One of my favorite touristy-type photos. I secretly waited for the good light while we were &quot;having fun&quot; and took this. Only regret: a stupid pole in the top-left corner of the frame I had to clumsily get rid of at post-processing.&quot; -&gt;http://www.flickr.com/photos/alexnormand/4829260124/in/set-72157624547713078/ %}
+</code></pre>
+<p>to this (this example uses a slightly extended version named <code>fig</code>, different than the built-in <code>figure</code>):</p>
+<pre><code>{{% fig class=&quot;full&quot; src=&quot;http://farm5.staticflickr.com/4136/4829260124_57712e570a_o_d.jpg&quot; title=&quot;One of my favorite touristy-type photos. I secretly waited for the good light while we were having fun and took this. Only regret: a stupid pole in the top-left corner of the frame I had to clumsily get rid of at post-processing.&quot; link=&quot;http://www.flickr.com/photos/alexnormand/4829260124/in/set-72157624547713078/&quot; %}}
+</code></pre>
+<p>As a bonus, the shortcode named parameters are, arguably, more readable.</p>
+<h2 id="finishing-touches">Finishing touches</h2>
+<h3 id="fix-content">Fix content</h3>
+<p>Depending on the amount of customization that was done with each post with Jekyll, this step will require more or less effort. There are no hard and fast rules here except that <code>hugo server --watch</code> is your friend. Test your changes and fix errors as needed.</p>
+<h3 id="clean-up">Clean up</h3>
+<p>You&rsquo;ll want to remove the Jekyll configuration at this point. If you have anything else that isn&rsquo;t used, delete it.</p>
+<h2 id="a-practical-example-in-a-diff">A practical example in a diff</h2>
+<p><a href="http://heyitsalex.net/">Hey, it&rsquo;s Alex</a> was migrated in less than a <em>father-with-kids day</em> from Jekyll to Hugo. You can see all the changes (and screw-ups) by looking at this <a href="https://github.com/alexandre-normand/alexandre-normand/compare/869d69435bd2665c3fbf5b5c78d4c22759d7613a...b7f6605b1265e83b4b81495423294208cc74d610">diff</a>.</p>
+
+        </div>
+        <div class="post_extra mb-2">
+          
+<div class="copy" data-before="Share Story" data-after="Link Copied">
+  <svg class="icon">
+    <use xlink:href="#copy"></use>
+  </svg>
+</div>
+        </div>
+        <div>
+        
+        </div>
+      </div>
+    </div>
+    <a href="https://thewayofthema.github.io/" class="post_nav"><span class="post_next">The Latest 
+      <svg class="icon icon_scale">
+        <use xlink:href="#double-arrow"></use>
+      </svg>
+    </span></a>
+  </div>
+
+    </main>
+    <footer class="footer wrap pale">
+  <p>&copy;&nbsp;<span class="year"></span>&nbsp;The Way Of The Martial Artists</p>
+  <p class="attribution upcase">Designed by  <a href = '<no value>' target = '_blank' title = 'Linkedin Profile' rel = 'nonopener'><no value></a></p>
+</footer>
+
+
+<script src="https://thewayofthema.github.io/js/index.min.311a90c7f62b21b02a3954bf5a312820c9004ed1dc09e275023a2fe1fadfb5d08b6d7975e19d80aaa938312854ef604be88578a336c34a3bda2bad4a13e8a4f1.js"></script>
+
+    <svg width="0" height="0" class="hidden">
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 699.428 699.428" id="copy">
+    <path d="M502.714 0H240.428C194.178 0 153 42.425 153 87.429l-25.267.59c-46.228 0-84.019 41.834-84.019 86.838V612c0 45.004 41.179 87.428 87.429 87.428H459c46.249 0 87.428-42.424 87.428-87.428h21.857c46.25 0 87.429-42.424 87.429-87.428v-349.19L502.714 0zM459 655.715H131.143c-22.95 0-43.714-21.441-43.714-43.715V174.857c0-22.272 18.688-42.993 41.638-42.993l23.933-.721v393.429C153 569.576 194.178 612 240.428 612h262.286c0 22.273-20.765 43.715-43.714 43.715zm153-131.143c0 22.271-20.765 43.713-43.715 43.713H240.428c-22.95 0-43.714-21.441-43.714-43.713V87.429c0-22.272 20.764-43.714 43.714-43.714H459c-.351 50.337 0 87.975 0 87.975 0 45.419 40.872 86.882 87.428 86.882H612v306zm-65.572-349.715c-23.277 0-43.714-42.293-43.714-64.981V44.348L612 174.857h-65.572zm-43.714 131.537H306c-12.065 0-21.857 9.77-21.857 21.835 0 12.065 9.792 21.835 21.857 21.835h196.714c12.065 0 21.857-9.771 21.857-21.835 0-12.065-9.792-21.835-21.857-21.835zm0 109.176H306c-12.065 0-21.857 9.77-21.857 21.834 0 12.066 9.792 21.836 21.857 21.836h196.714c12.065 0 21.857-9.77 21.857-21.836 0-12.064-9.792-21.834-21.857-21.834z"></path>
+  </symbol>
+  <symbol viewBox="0 0 53 42" xmlns="http://www.w3.org/2000/svg" id="double-arrow">
+    <path d="M.595 39.653a1.318 1.318 0 0 1 0-1.864L16.55 21.833a1.318 1.318 0 0 0 0-1.863L.595 4.014a1.318 1.318 0 0 1 0-1.863L2.125.62a1.318 1.318 0 0 1 1.864 0l19.35 19.349a1.318 1.318 0 0 1 0 1.863l-19.35 19.35a1.318 1.318 0 0 1-1.863 0zm29 0a1.318 1.318 0 0 1 0-1.864L45.55 21.833a1.318 1.318 0 0 0 0-1.863L29.595 4.014a1.318 1.318 0 0 1 0-1.863l1.53-1.53a1.318 1.318 0 0 1 1.864 0l19.35 19.349a1.318 1.318 0 0 1 0 1.863l-19.35 19.35a1.318 1.318 0 0 1-1.863 0z"></path>
+  </symbol>
+</svg>
+  </body>
+</html>
