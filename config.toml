@@ -3,4 +3,10 @@ languageCode = 'ja'
 title = 'The Way Of The Martial Artists'
 theme = "newsroom"
 publishDir = "docs"
+hasCJKLanguage = true
 canonifyurls = true
+paginate = 6
+
+[params]
+locale = "ja"
+disableDarkMode = true

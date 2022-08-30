@@ -1,0 +1,12 @@
+{
+  "devDependencies": {
+    "netlify-lambda": "^2.0.15"
+  },
+  "scripts": {
+    "build": "netlify-lambda build src/functions/",
+    "serve": "netlify-lambda serve src/functions/"
+  },
+  "dependencies": {
+    "ogp-parser": "^0.6.0"
+  }
+}
